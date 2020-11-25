@@ -1,0 +1,25 @@
+<p>
+  Click any of the buttons below to cluster the network. On every push the
+  network will be reinitialized first. You can click on a cluster to open it.
+</p>
+
+<input
+  type="button"
+  onclick="clusterBySystem()"
+  value="Cluster by system"
+/>
+<br />
+<input type="button" onclick="clusterByColor()" value="Cluster by color" />
+<br />
+<input
+  type="button"
+  onclick="clusterByConnection()"
+  value="Cluster 'node 1' by connections"
+/>
+<br />
+<input type="button" onclick="clusterOutliers()" value="Cluster outliers" />
+<br />
+<input type="button" onclick="clusterByHubsize()" value="Cluster by hubsize" />
+<br />
+
+<div id="mynetwork"></div>
