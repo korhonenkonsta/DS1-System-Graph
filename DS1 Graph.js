@@ -1,7 +1,19 @@
 var shape = "dot"
 var fontBG = "white"
+
+//filtering
+const nodeFilterSelector = document.getElementById("nodeFilterSelect");
+const edgeFilters = document.getElementsByName("edgesFilter");
+
+function startNetwork(data) {
+  const container = document.getElementById("mynetwork");
+  const options = {};
+  new vis.Network(container, data, options);
+}
+//
+
 // create an array with nodes
-var nodes = [
+var nodes = new vis.DataSet([
   { id: "Player character", label: "Player character", shape: shape, value: 25, font: { background: fontBG }, color: "orange", system: "Player" },
   { id: "Attributes", label: "Attributes", shape: shape, value: 11, font: { background: fontBG }, color: "orange", system: "Player" },
   { id: "Weapon/shield", label: "Weapon/shield", shape: shape, value: 18, font: { background: fontBG }, color: "cyan"},
@@ -59,10 +71,10 @@ var nodes = [
   { id: 10, label: "Hitbox/hurtbox", cid: 1, color: "coral", x: -1300, y: 271, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
   { id: 11, label: "Visibility", cid: 1, color: "grey", x: -1300, y: 301, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
   { id: 12, label: "Not in game", cid: 1, color: "pink", x: -1300, y: 331, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-];
+]);
 
 // create an array with edges
-var edges = [
+var edges = new vis.DataSet([
   { from: "Player character", to: "Weapon/shield", label: "Equips", arrows: "to", font: { align: "horizontal" } },
   { from: "Player character", to: "Projectile", label: "Throws/fires", arrows: "to", font: { align: "horizontal" } },
   { from: "Player character", to: "Souls", label: "Has", arrows: "to", font: { align: "horizontal" } },
@@ -302,14 +314,74 @@ var edges = [
   
   { from: "Day/night cycle", to: "Visibility", label: "Affects", arrows: "to", font: { align: "horizontal" } },
   
-];
+]);
+
+//filtering
+/**
+ * filter values are updated in the outer scope.
+ * in order to apply filters to new values, DataView.refresh() should be called
+ */
+let nodeFilterValue = "";
+const edgesFilterValues = {
+  friend: true,
+  teacher: true,
+  parent: true,
+};
+/*
+      filter function should return true or false
+      based on whether item in DataView satisfies a given condition.
+    */
+const nodesFilter = (node) => {
+  if (nodeFilterValue === "") {
+    return true;
+  }
+  switch (nodeFilterValue) {
+    case "Player":
+      return node.system === "Player";
+    case "adult":
+      return node.system === "adult";
+    case "male":
+      return node.system === "male";
+    case "female":
+      return node.system === "female";
+    default:
+      return true;
+  }
+};
+
+const edgesFilter = (edge) => {
+  return edgesFilterValues[edge.relation];
+};
+
+const nodesView = new vis.DataView(nodes, { filter: nodesFilter });
+const edgesView = new vis.DataView(edges, { filter: edgesFilter });
+
+nodeFilterSelector.addEventListener("change", (e) => {
+  // set new value to filter variable
+  nodeFilterValue = e.target.value;
+  /*
+        refresh DataView,
+        so that its filter function is re-calculated with the new variable
+      */
+  nodesView.refresh();
+});
+
+edgeFilters.forEach((filter) =>
+  filter.addEventListener("change", (e) => {
+    const { value, checked } = e.target;
+    edgesFilterValues[value] = checked;
+    edgesView.refresh();
+  })
+);
+//
 
 // create a network
 var container = document.getElementById("mynetwork");
 var data = {
-  nodes: nodes,
-  edges: edges,
+  nodes: nodesView,
+  edges: edges, //replace with edgesView if edge filtering wanted
 };
+
 var options = {
 physics:{ enabled: true,
 barnesHut: {
@@ -323,14 +395,15 @@ barnesHut: {
     },
 },
 nodes: {
-      shape: "box",scaling: {
-        label: {enabled: true,
-					min: 20,
-          max: 20,
-        },
-      }, 
-      }
-   };
+  shape: "box",scaling: {
+    label: {enabled: true,
+            min: 20,
+            max: 20,
+           },
+    }, 
+	}
+};
+   
 var network = new vis.Network(container, data, options);
 network.on("selectNode", function (params) {
   if (params.nodes.length == 1) {
@@ -379,6 +452,7 @@ function clusterByColor() {
         shape: "database",
         color: color,
         label: "color:" + color,
+        font: { background: fontBG }
       },
     };
     network.cluster(clusterOptionsByData);
@@ -407,7 +481,7 @@ function clusterBySystem() {
       clusterNodeProperties: {
         id: "cluster:" + color,
         borderWidth: 3,
-        shape: "dot",
+        shape: "square",
         color: colors2[i],
         label: "System: " + color,
       },
