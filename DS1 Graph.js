@@ -14,11 +14,11 @@ function startNetwork(data) {
 
 // create an array with nodes
 var nodes = new vis.DataSet([
-  { id: "Player character", label: "Player character", shape: shape, value: 25, font: { background: fontBG }, color: "orange", system: "Player" },
+  { id: "Player character", label: "Player character", shape: shape, value: 32, font: { background: fontBG }, color: "orange", system: "Player" },
   { id: "Attributes", label: "Attributes", shape: shape, value: 11, font: { background: fontBG }, color: "orange", system: "Player" },
-  { id: "Weapon/shield", label: "Weapon/shield", shape: shape, value: 18, font: { background: fontBG }, color: "cyan"},
+  { id: "Weapon/shield", label: "Weapon/shield", shape: shape, value: 18, font: { background: fontBG }, color: "cyan", system: "Weapons/shield"},
   { id: "Equipment", label: "Equipment", shape: shape, value: 34, font: { background: fontBG }, color: "teal", system: "Items/equipment" },
-  { id: "Stamina", label: "Stamina", shape: shape, value: 17, font: { background: fontBG }, color: "yellow"},
+  { id: "Stamina", label: "Stamina", shape: shape, value: 17, font: { background: fontBG }, color: "yellow", system: "Stamina"},
   { id: "Healing item", label: "Healing item", shape: shape, value: 5, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Projectile", label: "Projectile", shape: shape, value: 6, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Level geometry", label: "Level geometry", shape: shape, value: 18, font: { background: fontBG }, color: "green", system: "World"},
@@ -28,14 +28,14 @@ var nodes = new vis.DataSet([
   { id: "Humanity", label: "Humanity", shape: shape, value: 5, font: { background: fontBG }, color: "orange", system: "Player"},
   { id: "Status effect", label: "Status effect", shape: shape, value: 11, font: { background: fontBG }, color: "orange", system: "Player"},
   { id: "Equip load", label: "Equip load", shape: shape, value: 5, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Visibility", label: "Visibility", shape: shape, value: 8, font: { background: fontBG }, color: "grey"},
+  { id: "Visibility", label: "Visibility", shape: shape, value: 8, font: { background: fontBG }, color: "grey", system: "Visibility"},
   { id: "Bloodstain", label: "Bloodstain", shape: shape, value: 5, font: { background: fontBG }, color: "green", system: "World"},
   { id: "Utility magic/item", label: "Utility magic/item", shape: shape, value: 21, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Combat magic/item", label: "Combat magic/item", shape: shape, value: 23, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Noise", label: "Noise", shape: shape, value: 4, font: { background: fontBG }, color: "navy"},
+  { id: "Noise", label: "Noise", shape: shape, value: 4, font: { background: fontBG }, color: "navy", system: "Noise"},
   { id: "NPC", label: "NPC", shape: shape, value: 25, font: { background: fontBG }, color: "blue", system: "NPC"},
   { id: "AI", label: "AI", shape: shape, value: 4, font: { background: fontBG }, color: "blue", system: "NPC"},//4
-  { id: "Health", label: "Health", shape: shape, value: 16, font: { background: fontBG }, color: "red"},
+  { id: "Health", label: "Health", shape: shape, value: 16, font: { background: fontBG }, color: "red", system: "Health"},
   { id: "Defence", label: "Defence", shape: shape, value: 5, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Resistances", label: "Resistances", shape: shape, value: 4, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Poise", label: "Poise", shape: shape, value: 8, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
@@ -44,16 +44,18 @@ var nodes = new vis.DataSet([
   { id: "Weather", label: "Weather", shape: shape, value: 3, font: { background: fontBG }, color: "pink", system: "Not in game"},
   { id: "Bonfire", label: "Bonfire", shape: shape, value: 8, font: { background: fontBG }, color: "green", system: "World"},
   { id: "Message", label: "Message", shape: shape, value: 3, font: { background: fontBG }, color: "green", system: "World"},
-  { id: "Swing", label: "Swing", shape: shape, value: 8, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Roll", label: "Roll", shape: shape, value: 7, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Block", label: "Block", shape: shape, value: 5, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Backstab", label: "Backstab", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Parry", label: "Parry", shape: shape, value: 2, color: "lime", system: "Player actions"},
-  { id: "Riposte", label: "Riposte", shape: shape, value: 3, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Jump", label: "Jump", shape: shape, value: 3, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Backstep", label: "Backstep", shape: shape, value: 3, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  
+  { id: "Swing", label: "Swing", shape: shape, value: 9, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Roll", label: "Roll", shape: shape, value: 8, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Block", label: "Block", shape: shape, value: 6, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Backstab", label: "Backstab", shape: shape, value: 5, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Parry", label: "Parry", shape: shape, value: 3, color: "lime", system: "Player actions"},
+  { id: "Riposte", label: "Riposte", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Jump", label: "Jump", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Backstep", label: "Backstep", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
   { id: "Sprint", label: "Sprint", shape: shape, value: 5, font: { background: fontBG }, color: "lime", system: "Player actions"},
   { id: "Kick", label: "Kick", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  
   { id: "Durability", label: "Durability", shape: shape, value: 7, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Item discovery", label: "Item discovery", shape: shape, value: 4, font: { background: fontBG }, color: "orange", system: "Player"},
   
@@ -67,33 +69,43 @@ var nodes = new vis.DataSet([
   { id: 6, label: "Stamina", cid: 1, color: "yellow", x: -1300, y: 151, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
   { id: 7, label: "Weapon/shield", cid: 1, color: "cyan", x: -1300, y: 181, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
   { id: 8, label: "Player actions", cid: 1, color: "lime", x: -1300, y: 211, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 9, label: "Stamina", cid: 1, color: "yellow", x: -1300, y: 241, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 10, label: "Hitbox/hurtbox", cid: 1, color: "coral", x: -1300, y: 271, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 11, label: "Visibility", cid: 1, color: "grey", x: -1300, y: 301, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  { id: 9, label: "Hitbox/hurtbox", cid: 1, color: "coral", x: -1300, y: 241, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  { id: 10, label: "Visibility", cid: 1, color: "grey", x: -1300, y: 271, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  { id: 11, label: "Noise", cid: 1, color: "navy", x: -1300, y: 301, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
   { id: 12, label: "Not in game", cid: 1, color: "pink", x: -1300, y: 331, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
 ]);
 
 // create an array with edges
 var edges = new vis.DataSet([
-  { from: "Player character", to: "Weapon/shield", label: "Equips", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Projectile", label: "Throws/fires", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Souls", label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Humanity", label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Utility magic/item", label: "Uses/equips", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Healing item", label: "Uses", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Health", label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Equipment", label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Stamina" , label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Defence" , label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Resistances" , label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Poise" , label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Equip load", label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Inventory/attunement", label: "Has", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Hurtbox", label: "Contains", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Bloodstain", label: "Drops", arrows: "to", font: { align: "horizontal" } },
-  { from: "Player character", to: "Bloodstain", label: "Picks up", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Weapon/shield", label: "Equips", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Projectile", label: "Throws/fires", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
+  { from: "Player character", to: "Souls", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Humanity", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Utility magic/item", label: "Uses", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
+  { from: "Player character", to: "Healing item", label: "Uses", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
+  { from: "Player character", to: "Health", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Equipment", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Stamina" , label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Defence" , label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Resistances" , label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Poise" , label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Equip load", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Inventory/attunement", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Hurtbox", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Bloodstain", label: "Drops", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
+  { from: "Player character", to: "Bloodstain", label: "Picks up", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
+  
+  { from: "Player character", to: "Swing", label: "Performs", arrows: "to", font: { align: "horizontal" } },
   { from: "Player character", to: "Sprint", label: "Performs", arrows: "to", font: { align: "horizontal" } },
   { from: "Player character", to: "Kick", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Backstep", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Backstab", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Roll", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Block", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Jump", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Parry", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  { from: "Player character", to: "Riposte", label: "Performs", arrows: "to", font: { align: "horizontal" } },
+  
   { from: "Player character", to: "Visibility", label: "Has", arrows: "to", font: { align: "horizontal" } },
   { from: "Player character", to: "NPC", label: "Talks with", arrows: "to", font: { align: "horizontal" } },
   { from: "Player character", to: "Attributes", label: "Has", arrows: "to", font: { align: "horizontal" } },
@@ -323,8 +335,8 @@ var edges = new vis.DataSet([
  */
 let nodeFilterValue = "";
 const edgesFilterValues = {
-  friend: true,
-  teacher: true,
+  "Has/contains/equips": true,
+  "Other": true,
   parent: true,
 };
 /*
@@ -338,12 +350,26 @@ const nodesFilter = (node) => {
   switch (nodeFilterValue) {
     case "Player":
       return node.system === "Player";
-    case "adult":
-      return node.system === "adult";
-    case "male":
-      return node.system === "male";
-    case "female":
-      return node.system === "female";
+    case "World":
+      return node.system === "World";
+    case "NPC":
+      return node.system === "NPC";
+    case "Items/equipment":
+      return node.system === "Items/equipment";
+    case "Health":
+      return node.system === "Health";
+    case "Stamina":
+      return node.system === "Stamina";
+    case "Weapon/shield":
+      return node.system === "Weapon/shield";
+    case "Player actions":
+      return node.system === "Player actions";
+    case "Hitbox/hurtbox":
+      return node.system === "Hitbox/hurtbox";
+    case "Visibility":
+      return node.system === "Visibility";
+    case "Not in game":
+      return node.system === "Not in game";
     default:
       return true;
   }
@@ -379,7 +405,7 @@ edgeFilters.forEach((filter) =>
 var container = document.getElementById("mynetwork");
 var data = {
   nodes: nodesView,
-  edges: edges, //replace with edgesView if edge filtering wanted
+  edges: edgesView, //replace with edgesView if edge filtering wanted
 };
 
 var options = {
