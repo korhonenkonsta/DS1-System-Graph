@@ -1,3 +1,68 @@
+<h1>Dark Souls Systems</h1>
+<label>
+  Filter nodes
+  <select id="nodeFilterSelect">
+    <option value>All</option>
+    <option value="Player">Player</option>
+    <option value="World">World</option>
+    <option value="NPC">NPC</option>
+    <option value="Items/equipment">Items/equipment</option>
+    <option value="Resources">Resources</option>
+    <option value="Player actions">Player actions</option>
+    <option value="Hitbox/hurtbox">Hitbox/hurtbox</option>
+    <option value="Visibility">Visibility</option>
+    <option value="Noise">Noise</option>
+    <option value="Not in game">Not in game</option>
+  </select>
+</label>
+
+<br />
+<label>
+  Filter edges
+  <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Has/contains/equips" checked />
+      Relation type: <span style="color: blue">Has/contains/equips</span>
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Changes resources" checked />
+      Relation type: <span style="color: blue">Changes resources</span>
+    </label>
+  </div>
+   <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Changes stats" checked />
+      Relation type: <span style="color: blue">Changes stats</span>
+    </label>
+  </div>
+   <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Movement" checked />
+      Relation type: <span style="color: blue">Movement</span>
+    </label>
+  </div>
+   <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Combat actions" checked />
+      Relation type: <span style="color: blue">Combat actions</span>
+    </label>
+  </div>
+   <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Utility actions" checked />
+      Relation type: <span style="color: blue">Utility actions</span>
+    </label>
+  </div>
+   <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Other" checked />
+      Relation type: <span style="color: blue">Other</span>
+    </label>
+  </div>
+</label>
+
 <p>
   Click any of the buttons below to cluster the network. On every push the
   network will be reinitialized first. You can click on a cluster to open it.
@@ -10,16 +75,5 @@
 />
 <br />
 <input type="button" onclick="clusterByColor()" value="Cluster by color" />
-<br />
-<input
-  type="button"
-  onclick="clusterByConnection()"
-  value="Cluster 'node 1' by connections"
-/>
-<br />
-<input type="button" onclick="clusterOutliers()" value="Cluster outliers" />
-<br />
-<input type="button" onclick="clusterByHubsize()" value="Cluster by hubsize" />
-<br />
 
 <div id="mynetwork"></div>
