@@ -3,6 +3,7 @@ var fontBG = "white"
 
 //filtering
 const nodeFilterSelector = document.getElementById("nodeFilterSelect");
+const nodeFilters = document.getElementsByName("nodesFilter");
 const edgeFilters = document.getElementsByName("edgesFilter");
 
 function startNetwork(data) {
@@ -61,17 +62,17 @@ var nodes = new vis.DataSet([
   
   
   //Legend
-  { id: 1, label: "Player", cid: 1, color: "orange", x: -1300, y: 1, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 2, label: "World", cid: 1, color: "green", x: -1300, y: 31, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 3, label: "NPC", cid: 1, color: "blue", x: -1300, y: 61, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 4, label: "Items/equipment", cid: 1, color: "teal", x: -1300, y: 91, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 5, label: "Resources", cid: 1, color: "red", x: -1300, y: 121, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 7, label: "Weapon/shield", cid: 1, color: "cyan", x: -1300, y: 181, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 8, label: "Player actions", cid: 1, color: "lime", x: -1300, y: 211, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 9, label: "Hitbox/hurtbox", cid: 1, color: "coral", x: -1300, y: 241, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 10, label: "Visibility", cid: 1, color: "grey", x: -1300, y: 271, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 11, label: "Noise", cid: 1, color: "yellow", x: -1300, y: 301, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  { id: 12, label: "Not in game", cid: 1, color: "pink", x: -1300, y: 331, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 1, label: "Player", cid: 1, color: "orange", x: -1300, y: 1, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 2, label: "World", cid: 1, color: "green", x: -1300, y: 31, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 3, label: "NPC", cid: 1, color: "blue", x: -1300, y: 61, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 4, label: "Items/equipment", cid: 1, color: "teal", x: -1300, y: 91, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 5, label: "Resources", cid: 1, color: "red", x: -1300, y: 121, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 7, label: "Weapon/shield", cid: 1, color: "cyan", x: -1300, y: 181, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 8, label: "Player actions", cid: 1, color: "lime", x: -1300, y: 211, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 9, label: "Hitbox/hurtbox", cid: 1, color: "coral", x: -1300, y: 241, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 10, label: "Visibility", cid: 1, color: "grey", x: -1300, y: 271, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 11, label: "Noise", cid: 1, color: "yellow", x: -1300, y: 301, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
+  //{ id: 12, label: "Not in game", cid: 1, color: "pink", x: -1300, y: 331, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
 ]);
 
 // create an array with edges
@@ -349,64 +350,89 @@ const edgesFilterValues = {
   "Combat actions": true,
   "Utility actions": true,
   "Other": true,
-  parent: true,
+  //parent: true,
+};
+const nodesFilterValues = {
+  "Player": true,
+  "World": true,
+  "NPC": true,
+  "Items/equipment": true,
+  "Resources": true,
+  "Player actions": true,
+  "Hitbox/hurtbox": true,
+  "Visibility": true,
+  "Noise": true,
+  "Not in game": true,
+
 };
 /*
       filter function should return true or false
       based on whether item in DataView satisfies a given condition.
     */
-const nodesFilter = (node) => {
-  if (nodeFilterValue === "") {
-    return true;
-  }
-  switch (nodeFilterValue) {
-    case "Player":
-      return node.system === "Player";
-    case "World":
-      return node.system === "World";
-    case "NPC":
-      return node.system === "NPC";
-    case "Items/equipment":
-      return node.system === "Items/equipment";
-    case "Resources":
-      return node.system === "Resources";
-    case "Noise":
-      return node.system === "Noise";
-    case "Player actions":
-      return node.system === "Player actions";
-    case "Hitbox/hurtbox":
-      return node.system === "Hitbox/hurtbox";
-    case "Visibility":
-      return node.system === "Visibility";
-    case "Not in game":
-      return node.system === "Not in game";
-    default:
-      return true;
-  }
-};
+//const nodesFilter = (node) => {
+  //if (nodeFilterValue === "") {
+    //return true;
+  //}
+  //switch (nodeFilterValue) {
+    //case "Player":
+      //return node.system === "Player";
+    //case "World":
+      //return node.system === "World";
+    //case "NPC":
+      //return node.system === "NPC";
+    //case "Items/equipment":
+      //return node.system === "Items/equipment";
+    //case "Resources":
+      //return node.system === "Resources";
+    //case "Noise":
+      //return node.system === "Noise";
+    //case "Player actions":
+      //return node.system === "Player actions";
+    //case "Hitbox/hurtbox":
+      //return node.system === "Hitbox/hurtbox";
+    //case "Visibility":
+      //return node.system === "Visibility";
+    //case "Not in game":
+      //return node.system === "Not in game";
+    //default:
+    //  return true;
+  //}
+//};
 
 const edgesFilter = (edge) => {
   return edgesFilterValues[edge.relation];
 };
 
+const nodesFilter = (node) => {
+  return nodesFilterValues[node.system];
+};
+
 const nodesView = new vis.DataView(nodes, { filter: nodesFilter });
 const edgesView = new vis.DataView(edges, { filter: edgesFilter });
 
-nodeFilterSelector.addEventListener("change", (e) => {
+//nodeFilterSelector.addEventListener("change", (e) => {
   // set new value to filter variable
-  nodeFilterValue = e.target.value;
+  //nodeFilterValue = e.target.value;
   /*
         refresh DataView,
         so that its filter function is re-calculated with the new variable
       */
-  nodesView.refresh();
-});
+  //nodesView.refresh();
+//});
 
 edgeFilters.forEach((filter) =>
   filter.addEventListener("change", (e) => {
     const { value, checked } = e.target;
     edgesFilterValues[value] = checked;
     edgesView.refresh();
+  })
+);
+
+nodeFilters.forEach((filter) =>
+  filter.addEventListener("change", (e) => {
+    const { value, checked } = e.target;
+    nodesFilterValues[value] = checked;
+    nodesView.refresh();
   })
 );
 //
