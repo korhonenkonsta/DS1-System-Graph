@@ -60,19 +60,6 @@ var nodes = new vis.DataSet([
   { id: "Durability", label: "Durability", shape: shape, value: 7, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Item discovery", label: "Item discovery", shape: shape, value: 4, font: { background: fontBG }, color: "orange", system: "Player"},
   
-  
-  //Legend
-  //{ id: 1, label: "Player", cid: 1, color: "orange", x: -1300, y: 1, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 2, label: "World", cid: 1, color: "green", x: -1300, y: 31, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 3, label: "NPC", cid: 1, color: "blue", x: -1300, y: 61, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 4, label: "Items/equipment", cid: 1, color: "teal", x: -1300, y: 91, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 5, label: "Resources", cid: 1, color: "red", x: -1300, y: 121, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 7, label: "Weapon/shield", cid: 1, color: "cyan", x: -1300, y: 181, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 8, label: "Player actions", cid: 1, color: "lime", x: -1300, y: 211, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 9, label: "Hitbox/hurtbox", cid: 1, color: "coral", x: -1300, y: 241, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 10, label: "Visibility", cid: 1, color: "grey", x: -1300, y: 271, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 11, label: "Noise", cid: 1, color: "yellow", x: -1300, y: 301, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
-  //{ id: 12, label: "Not in game", cid: 1, color: "pink", x: -1300, y: 331, fixed: true, physics: false, margin: { top: 0, right: 20, bottom: 0, left: 20 },},
 ]);
 
 // create an array with edges
