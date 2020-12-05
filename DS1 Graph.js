@@ -15,7 +15,7 @@ function startNetwork(data) {
 
 // create an array with nodes
 var nodes = new vis.DataSet([
-  { id: "Player character", label: "Player character", shape: shape, value: 36, font: { background: fontBG }, color: "orange", system: "Player" },
+  { id: "Player character", label: "Player character", shape: shape, value: 37, font: { background: fontBG }, color: "orange", system: "Player" },
   { id: "Attributes", label: "Attributes", shape: shape, value: 11, font: { background: fontBG }, color: "orange", system: "Player" },
   { id: "Weapon/shield", label: "Weapon/shield", shape: shape, value: 18, font: { background: fontBG }, color: "cyan", system: "Weapons/shield"},
   { id: "Equipment", label: "Equipment", shape: shape, value: 33, font: { background: fontBG }, color: "teal", system: "Items/equipment" },
@@ -34,7 +34,7 @@ var nodes = new vis.DataSet([
   { id: "Utility magic/item", label: "Utility magic/item", shape: shape, value: 22, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Combat magic/item", label: "Combat magic/item", shape: shape, value: 25, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
   { id: "Noise", label: "Noise", shape: shape, value: 4, font: { background: fontBG }, color: "yellow", system: "Noise"},
-  { id: "NPC", label: "NPC", shape: shape, value: 26, font: { background: fontBG }, color: "blue", system: "NPC"},
+  { id: "NPC", label: "NPC", shape: shape, value: 27, font: { background: fontBG }, color: "blue", system: "NPC"},
   { id: "AI", label: "AI", shape: shape, value: 4, font: { background: fontBG }, color: "blue", system: "NPC"},
   { id: "Health", label: "Health", shape: shape, value: 16, font: { background: fontBG }, color: "red", system: "Resources"},
   { id: "Defence", label: "Defence", shape: shape, value: 5, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
@@ -49,7 +49,7 @@ var nodes = new vis.DataSet([
   { id: "Swing", label: "Swing", shape: shape, value: 9, font: { background: fontBG }, color: "lime", system: "Player actions"},
   { id: "Roll", label: "Roll", shape: shape, value: 8, font: { background: fontBG }, color: "lime", system: "Player actions"},
   { id: "Block", label: "Block", shape: shape, value: 6, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Backstab", label: "Backstab", shape: shape, value: 5, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Backstab", label: "Backstab", shape: shape, value: 7, font: { background: fontBG }, color: "lime", system: "Player actions"},
   { id: "Parry", label: "Parry", shape: shape, value: 3, color: "lime", system: "Player actions"},
   { id: "Riposte", label: "Riposte", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
   { id: "Jump", label: "Jump", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
@@ -246,6 +246,8 @@ var edges = new vis.DataSet([
   { from: "Backstab", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstab", to: "Health", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstab", to: "Hurtbox", label: "Grants temp invuln.", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Backstab", to: "Player", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Backstab", to: "NPC", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   
   { from: "Block", to: "Stamina", label: "Consumes on hit", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Block", to: "Stamina", label: "Slows recovery", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
@@ -352,39 +354,6 @@ const nodesFilterValues = {
   "Not in game": true,
 
 };
-/*
-      filter function should return true or false
-      based on whether item in DataView satisfies a given condition.
-    */
-//const nodesFilter = (node) => {
-  //if (nodeFilterValue === "") {
-    //return true;
-  //}
-  //switch (nodeFilterValue) {
-    //case "Player":
-      //return node.system === "Player";
-    //case "World":
-      //return node.system === "World";
-    //case "NPC":
-      //return node.system === "NPC";
-    //case "Items/equipment":
-      //return node.system === "Items/equipment";
-    //case "Resources":
-      //return node.system === "Resources";
-    //case "Noise":
-      //return node.system === "Noise";
-    //case "Player actions":
-      //return node.system === "Player actions";
-    //case "Hitbox/hurtbox":
-      //return node.system === "Hitbox/hurtbox";
-    //case "Visibility":
-      //return node.system === "Visibility";
-    //case "Not in game":
-      //return node.system === "Not in game";
-    //default:
-    //  return true;
-  //}
-//};
 
 const edgesFilter = (edge) => {
   return edgesFilterValues[edge.relation];
@@ -396,16 +365,6 @@ const nodesFilter = (node) => {
 
 const nodesView = new vis.DataView(nodes, { filter: nodesFilter });
 const edgesView = new vis.DataView(edges, { filter: edgesFilter });
-
-//nodeFilterSelector.addEventListener("change", (e) => {
-  // set new value to filter variable
-  //nodeFilterValue = e.target.value;
-  /*
-        refresh DataView,
-        so that its filter function is re-calculated with the new variable
-      */
-  //nodesView.refresh();
-//});
 
 edgeFilters.forEach((filter) =>
   filter.addEventListener("change", (e) => {
@@ -463,49 +422,50 @@ network.on("selectNode", function (params) {
   }
 });
 
-function clusterByCid() {
-  network.setData(data);
-  var clusterOptionsByData = {
-    joinCondition: function (childOptions) {
-      return childOptions.system == "Player";
-    },
-    clusterNodeProperties: {
-      id: "cidCluster",
-      borderWidth: 3,
-      shape: "database",
-    },
-  };
-  network.cluster(clusterOptionsByData);
-}
-function clusterByColor() {
-  network.setData(data);
-  var colors = ["orange", "lime", "green", "teal", "blue", "coral"];
-  var clusterOptionsByData;
-  for (var i = 0; i < colors.length; i++) {
-    var color = colors[i];
-    clusterOptionsByData = {
-      joinCondition: function (childOptions) {
-        return childOptions.color.background == color; // the color is fully defined in the node.
-      },
-      processProperties: function (clusterOptions, childNodes, childEdges) {
-        var totalMass = 0;
-        for (var i = 0; i < childNodes.length; i++) {
-          totalMass += childNodes[i].mass;
-        }
-        clusterOptions.mass = totalMass;
-        return clusterOptions;
-      },
-      clusterNodeProperties: {
-        id: "cluster:" + color,
-        borderWidth: 3,
-        shape: "database",
-        color: color,
-        label: "color:" + color,
-        font: { background: fontBG }
-      },
-    };
-    network.cluster(clusterOptionsByData);
+function uncluster() {
+  if (network.findNode("cluster:Player").length != 0){
+  	
+		if (network.isCluster("cluster:Player") == true) {
+      network.openCluster("cluster:Player");
+    }
   }
+  if (network.findNode("cluster:World").length != 0){
+    if (network.isCluster("cluster:World") == true) {
+        network.openCluster("cluster:World");
+      }
+  }
+  if (network.findNode("cluster:NPC").length != 0){
+    if (network.isCluster("cluster:NPC") == true) {
+        network.openCluster("cluster:NPC");
+      }
+  }
+  if (network.findNode("cluster:Items/equipment").length != 0){
+    if (network.isCluster("cluster:Items/equipment") == true) {
+        network.openCluster("cluster:Items/equipment");
+      }
+  }
+  if (network.findNode("cluster:Player actions").length != 0){
+    if (network.isCluster("cluster:Player actions") == true) {
+        network.openCluster("cluster:Player actions");
+      }
+  }
+  if (network.findNode("cluster:Hitbox/hurtbox").length != 0){
+    if (network.isCluster("cluster:Hitbox/hurtbox") == true) {
+        network.openCluster("cluster:Hitbox/hurtbox");
+      }
+  }
+  if (network.findNode("cluster:Not in game").length != 0){
+    if (network.isCluster("cluster:Not in game") == true) {
+        network.openCluster("cluster:Not in game");
+      }
+  }
+  if (network.findNode("cluster:Resources").length != 0){
+    if (network.isCluster("cluster:Resources") == true) {
+        network.openCluster("cluster:Resources");
+      }
+  }
+  
+  
 }
 
 function clusterBySystem() {
