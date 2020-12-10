@@ -1,0 +1,118 @@
+<h1>Dark Souls Systems</h1>
+
+<label>
+  Filter systems (node groups of same color):
+  <div>
+    <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Player" checked />
+      <span style="color: #FFA807">Player &emsp;</span>
+      </label>
+       <label>
+      
+      <input type="checkbox" name="nodesFilter" value="World" checked />
+      <span style="color: #97C2FC">World &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="NPC" checked />
+      <span style="color: #3344f5">NPC &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Weapon/shield" checked />
+      <span style="color: black">Weapon/shield &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Items/equipment" checked />
+      <span style="color: #ce41e1">Items/equipment &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Resources" checked />
+      <span style="color: #e14141">Resources &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Player actions" checked />
+      <span style="color: #7BE141">Player actions &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Hitbox/hurtbox" checked />
+      <span style="color: #e0e024">Hitbox/hurtbox &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Visibility" checked />
+      <span style="color: #b1b2bd">Visibility &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Noise" checked />
+      <span style="color: #1a9fab">Noise &emsp;</span>
+      </label>
+      <label>
+      
+      <input type="checkbox" name="nodesFilter" value="Extra world systems" checked />
+      <span style="color: #f291e7">Extra world systems (not in game)</span>
+    </label>
+  </div>
+</label>
+
+<br />
+<label>
+  Filter relation/behavior types (edges):
+  <div>
+    <label>
+      <input type="checkbox" name="edgesFilter" value="Has/contains/equips" checked />
+      <span style="color: black">Has/contains/equips &emsp;</span>
+      
+    </label>
+    <label>
+      
+      <input type="checkbox" name="edgesFilter" value="Changes resources" checked />
+      <span style="color: black">Changes resources &emsp;</span>
+    </label>
+    <label>
+      
+      <input type="checkbox" name="edgesFilter" value="Changes stats" checked />
+      <span style="color: black">Changes stats &emsp;</span>
+    </label>
+    <label>
+      
+      <input type="checkbox" name="edgesFilter" value="Movement" checked />
+      <span style="color: black">Movement &emsp;</span>
+    </label>
+    <label>
+      
+      <input type="checkbox" name="edgesFilter" value="Combat actions" checked />
+      <span style="color: black">Combat actions &emsp;</span>
+    </label>
+    <label>
+      
+      <input type="checkbox" name="edgesFilter" value="Utility actions" checked />
+      <span style="color: black">Utility actions &emsp;</span>
+    </label>
+    <label>
+      
+      <input type="checkbox" name="edgesFilter" value="Other" checked />
+      <span style="color: black">Other</span>
+    </label>
+  </div>
+</label>
+
+<p>
+  Click the button below to cluster the network. Click on a cluster to open it.
+</p>
+
+<input
+  type="button"
+  onclick="clusterBySystem()"
+  value="Cluster by system"
+/>
+<br />
+<input type="button" onclick="uncluster()" value="Uncluster all" />
+
+<div id="mynetwork"></div>
