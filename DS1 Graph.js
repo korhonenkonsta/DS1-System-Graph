@@ -15,50 +15,51 @@ function startNetwork(data) {
 
 // create an array with nodes
 var nodes = new vis.DataSet([
-  { id: "Player character", label: "Player character", shape: shape, value: 37, font: { background: fontBG }, color: "orange", system: "Player" },
-  { id: "Attributes", label: "Attributes", shape: shape, value: 11, font: { background: fontBG }, color: "orange", system: "Player" },
-  { id: "Weapon/shield", label: "Weapon/shield", shape: shape, value: 18, font: { background: fontBG }, color: "cyan", system: "Weapons/shield"},
-  { id: "Equipment", label: "Equipment", shape: shape, value: 33, font: { background: fontBG }, color: "teal", system: "Items/equipment" },
-  { id: "Stamina", label: "Stamina", shape: shape, value: 17, font: { background: fontBG }, color: "red", system: "Resources"},
-  { id: "Healing item", label: "Healing item", shape: shape, value: 6, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Projectile", label: "Projectile", shape: shape, value: 6, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Level geometry", label: "Level geometry", shape: shape, value: 19, font: { background: fontBG }, color: "green", system: "World"},
-  { id: "Hitbox", label: "Hitbox", shape: shape, value: 7, font: { background: fontBG }, color: "coral", system: "Hitbox/hurtbox"},
-  { id: "Hurtbox", label: "Hurtbox", shape: shape, value: 9, font: { background: fontBG }, color: "coral", system: "Hitbox/hurtbox"},
-  { id: "Souls", label: "Souls", shape: shape, value: 7, font: { background: fontBG }, color: "red", system: "Resources"},
-  { id: "Humanity", label: "Humanity", shape: shape, value: 5, font: { background: fontBG }, color: "red", system: "Resources"},
-  { id: "Status effect", label: "Status effect", shape: shape, value: 11, font: { background: fontBG }, color: "red", system: "Resources"},
-  { id: "Equip load", label: "Equip load", shape: shape, value: 5, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Visibility", label: "Visibility", shape: shape, value: 8, font: { background: fontBG }, color: "grey", system: "Visibility"},
-  { id: "Bloodstain", label: "Bloodstain", shape: shape, value: 5, font: { background: fontBG }, color: "green", system: "World"},
-  { id: "Utility magic/item", label: "Utility magic/item", shape: shape, value: 22, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Combat magic/item", label: "Combat magic/item", shape: shape, value: 25, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Noise", label: "Noise", shape: shape, value: 4, font: { background: fontBG }, color: "yellow", system: "Noise"},
-  { id: "NPC", label: "NPC", shape: shape, value: 27, font: { background: fontBG }, color: "blue", system: "NPC"},
-  { id: "AI", label: "AI", shape: shape, value: 4, font: { background: fontBG }, color: "blue", system: "NPC"},
-  { id: "Health", label: "Health", shape: shape, value: 16, font: { background: fontBG }, color: "red", system: "Resources"},
-  { id: "Defence", label: "Defence", shape: shape, value: 5, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Resistances", label: "Resistances", shape: shape, value: 4, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Poise", label: "Poise", shape: shape, value: 8, font: { background: fontBG }, color: "red", system: "Resources"},
-  { id: "Inventory/attunement", label: "Inventory/attunement", shape: shape, value: 8, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Day/night cycle", label: "Day/night cycle", shape: shape, value: 2, font: { background: fontBG }, color: "pink", system: "Not in game"},
-  { id: "Weather", label: "Weather", shape: shape, value: 3, font: { background: fontBG }, color: "pink", system: "Not in game"},
-  { id: "Bonfire", label: "Bonfire", shape: shape, value: 10, font: { background: fontBG }, color: "green", system: "World"},
-  { id: "Message", label: "Message", shape: shape, value: 3, font: { background: fontBG }, color: "green", system: "World"},
+  { id: "Player character", label: "Player character", shape: shape, value: 38, font: { background: fontBG }, color: "#FFA807", system: "Player" },
+  { id: "Attributes", label: "Attributes", shape: shape, value: 11, font: { background: fontBG }, color: "#FFA807", system: "Player" },
+  { id: "Weapon/shield", label: "Weapon/shield", shape: shape, value: 18, font: { background: fontBG }, color: "black", system: "Weapon/shield"},
+  { id: "Equipment", label: "Equipment", shape: shape, value: 33, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment" },
+  { id: "Stamina", label: "Stamina", shape: shape, value: 17, font: { background: fontBG }, color: "#e14141", system: "Resources"},
+  { id: "Healing item", label: "Healing item", shape: shape, value: 6, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Projectile", label: "Projectile", shape: shape, value: 6, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Level geometry", label: "Level geometry", shape: shape, value: 19, font: { background: fontBG }, color: "#97C2FC", system: "World"},
+  { id: "Hitbox", label: "Hitbox", shape: shape, value: 7, font: { background: fontBG }, color: "#e0e024", system: "Hitbox/hurtbox"},
+  { id: "Hurtbox", label: "Hurtbox", shape: shape, value: 9, font: { background: fontBG }, color: "#e0e024", system: "Hitbox/hurtbox"},
+  { id: "Souls", label: "Souls", shape: shape, value: 7, font: { background: fontBG }, color: "#e14141", system: "Resources"},
+  { id: "Humanity", label: "Humanity", shape: shape, value: 5, font: { background: fontBG }, color: "#e14141", system: "Resources"},
+  { id: "Status effect", label: "Status effect", shape: shape, value: 11, font: { background: fontBG }, color: "#e14141", system: "Resources"},
+  { id: "Equip load", label: "Equip load", shape: shape, value: 5, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Visibility", label: "Visibility", shape: shape, value: 8, font: { background: fontBG }, color: "#b1b2bd", system: "Visibility"},
+  { id: "Bloodstain", label: "Bloodstain", shape: shape, value: 5, font: { background: fontBG }, color: "#97C2FC", system: "World"},
+  { id: "Utility magic/item", label: "Utility magic/item", shape: shape, value: 22, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Combat magic/item", label: "Combat magic/item", shape: shape, value: 25, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Noise", label: "Noise", shape: shape, value: 8, font: { background: fontBG }, color: "#1a9fab", system: "Noise"},
+  { id: "NPC", label: "NPC", shape: shape, value: 27, font: { background: fontBG }, color: "#3344f5", system: "NPC"},
+  { id: "AI", label: "AI", shape: shape, value: 4, font: { background: fontBG }, color: "#3344f5", system: "NPC"},
+  { id: "Health", label: "Health", shape: shape, value: 16, font: { background: fontBG }, color: "#e14141", system: "Resources"},
+  { id: "Defence", label: "Defence", shape: shape, value: 5, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Resistances", label: "Resistances", shape: shape, value: 4, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Poise", label: "Poise", shape: shape, value: 8, font: { background: fontBG }, color: "#e14141", system: "Resources"},
+  { id: "Inventory/attunement", label: "Inventory/attunement", shape: shape, value: 8, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Day/night cycle", label: "Day/night cycle", shape: shape, value: 2, font: { background: fontBG }, color: "#f291e7", system: "Extra world systems"},
+  { id: "Weather", label: "Weather", shape: shape, value: 3, font: { background: fontBG }, color: "#f291e7", system: "Extra world systems"},
+  { id: "Bonfire", label: "Bonfire", shape: shape, value: 10, font: { background: fontBG }, color: "#97C2FC", system: "World"},
+  { id: "Message/sign", label: "Message/sign", shape: shape, value: 3, font: { background: fontBG }, color: "#97C2FC", system: "World"},
   
-  { id: "Swing", label: "Swing", shape: shape, value: 9, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Roll", label: "Roll", shape: shape, value: 8, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Block", label: "Block", shape: shape, value: 6, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Backstab", label: "Backstab", shape: shape, value: 7, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Parry", label: "Parry", shape: shape, value: 3, color: "lime", system: "Player actions"},
-  { id: "Riposte", label: "Riposte", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Jump", label: "Jump", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Backstep", label: "Backstep", shape: shape, value: 5, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Sprint", label: "Sprint", shape: shape, value: 5, font: { background: fontBG }, color: "lime", system: "Player actions"},
-  { id: "Kick", label: "Kick", shape: shape, value: 4, font: { background: fontBG }, color: "lime", system: "Player actions"},
+  { id: "Swing", label: "Swing", shape: shape, value: 10, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Roll", label: "Roll", shape: shape, value: 9, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Block", label: "Block", shape: shape, value: 6, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Backstab", label: "Backstab", shape: shape, value: 7, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Parry", label: "Parry", shape: shape, value: 3, color: "#7BE141", system: "Player actions"},
+  { id: "Riposte", label: "Riposte", shape: shape, value: 4, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Jump", label: "Jump", shape: shape, value: 5, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Backstep", label: "Backstep", shape: shape, value: 6, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Sprint", label: "Sprint", shape: shape, value: 6, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
+  { id: "Kick", label: "Kick", shape: shape, value: 4, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
   
-  { id: "Durability", label: "Durability", shape: shape, value: 7, font: { background: fontBG }, color: "teal", system: "Items/equipment"},
-  { id: "Item discovery", label: "Item discovery", shape: shape, value: 4, font: { background: fontBG }, color: "orange", system: "Player"},
+  { id: "Durability", label: "Durability", shape: shape, value: 7, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
+  { id: "Item discovery", label: "Item discovery", shape: shape, value: 5, font: { background: fontBG }, color: "#FFA807", system: "Player"},
+ 
   
 ]);
 
@@ -68,6 +69,7 @@ var edges = new vis.DataSet([
   { from: "Player character", to: "Projectile", label: "Throws/fires", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions"},
   { from: "Player character", to: "Souls", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Player character", to: "Humanity", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Player character", to: "Item discovery", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Player character", to: "Utility magic/item", label: "Uses", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Player character", to: "Combat magic/item", label: "Uses", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Player character", to: "Healing item", label: "Uses", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
@@ -202,8 +204,8 @@ var edges = new vis.DataSet([
   { from: "Utility magic/item", to: "Level geometry", label: "Opens gate", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   { from: "Utility magic/item", to: "Level geometry", label: "Blends player in", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Utility magic/item", to: "Player character", label: "Warps", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
-  { from: "Utility magic/item", to: "Message", label: "Writes", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
-  { from: "Utility magic/item", to: "Message", label: "Reveals more", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
+  { from: "Utility magic/item", to: "Message/sign", label: "Writes", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
+  { from: "Utility magic/item", to: "Message/sign", label: "Reveals more", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Utility magic/item", to: "Roll", label: "Prevents", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Utility magic/item", to: "Sprint", label: "Prevents", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Utility magic/item", to: "Bonfire", label: "Allows further kindling", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
@@ -227,6 +229,7 @@ var edges = new vis.DataSet([
   { from: "Swing", to: "Durability", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   { from: "Swing", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Swing", to: "Weapon/shield", label: "Enables counter atk.", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Swing", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   
   { from: "Hitbox", to: "Hurtbox", label: "Collides", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Hitbox", to: "Level geometry", label: "Collides", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
@@ -238,10 +241,12 @@ var edges = new vis.DataSet([
   { from: "Roll", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Roll", to: "Swing", label: "Dodges", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Roll", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "Roll", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   
   { from: "Jump", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement"},
   { from: "Jump", to: "Level geometry", label: "Crosses gap", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   { from: "Jump", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
+  { from: "Jump", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   
   { from: "Backstab", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstab", to: "Health", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
@@ -264,10 +269,12 @@ var edges = new vis.DataSet([
   { from: "Backstep", to: "Poise", label: "Maxes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstep", to: "Swing", label: "Enables new", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Backstep", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "Backstep", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   
   { from: "Sprint", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Sprint", to: "Player character", label: "Increases speed", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   { from: "Sprint", to: "Swing", label: "Enables new", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Sprint", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   
   { from: "Kick", to: "NPC", label: "Staggers", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   
@@ -284,7 +291,7 @@ var edges = new vis.DataSet([
  
   { from: "Level geometry", to: "Bloodstain", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Level geometry", to: "Bonfire", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
-  { from: "Level geometry", to: "Message", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
+  { from: "Level geometry", to: "Message/sign", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Level geometry", to: "Utility magic/item", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Level geometry", to: "Combat magic/item", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Level geometry", to: "Player character", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
@@ -345,13 +352,14 @@ const nodesFilterValues = {
   "Player": true,
   "World": true,
   "NPC": true,
+  "Weapon/shield": true,
   "Items/equipment": true,
   "Resources": true,
   "Player actions": true,
   "Hitbox/hurtbox": true,
   "Visibility": true,
   "Noise": true,
-  "Not in game": true,
+  "Extra world systems": true,
 
 };
 
@@ -439,6 +447,11 @@ function uncluster() {
         network.openCluster("cluster:NPC");
       }
   }
+  if (network.findNode("cluster:Weapon/shield").length != 0){
+    if (network.isCluster("cluster:Weapon/shield") == true) {
+        network.openCluster("cluster:Weapon/shield");
+      }
+  }
   if (network.findNode("cluster:Items/equipment").length != 0){
     if (network.isCluster("cluster:Items/equipment") == true) {
         network.openCluster("cluster:Items/equipment");
@@ -454,9 +467,9 @@ function uncluster() {
         network.openCluster("cluster:Hitbox/hurtbox");
       }
   }
-  if (network.findNode("cluster:Not in game").length != 0){
-    if (network.isCluster("cluster:Not in game") == true) {
-        network.openCluster("cluster:Not in game");
+  if (network.findNode("cluster:Extra world systems").length != 0){
+    if (network.isCluster("cluster:Extra world systems") == true) {
+        network.openCluster("cluster:Extra world systems");
       }
   }
   if (network.findNode("cluster:Resources").length != 0){
@@ -470,8 +483,8 @@ function uncluster() {
 
 function clusterBySystem() {
   network.setData(data);
-  var colors = ["Player", "World", "NPC", "Items/equipment", "Player actions", "Hitbox/hurtbox", "Not in game", "Resources"];
-  var colors2 = ["orange", "green", "blue", "teal", "lime", "coral", "pink", "red"];
+  var colors = ["Player", "World", "NPC", "Weapon/shield", "Items/equipment", "Player actions", "Hitbox/hurtbox", "Extra world systems", "Resources"];
+  var colors2 = ["#FFA807", "#97C2FC", "#3344f5", "black", "#ce41e1", "#7BE141", "#e0e024", "#f291e7", "#e14141"];
   var clusterOptionsByData;
   for (var i = 0; i < colors.length; i++) {
     var color = colors[i];
