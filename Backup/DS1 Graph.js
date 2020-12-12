@@ -12,10 +12,10 @@ function startNetwork(data) {
   new vis.Network(container, data, options);
 }
 //
-
+//
 // create an array with nodes
 var nodes = new vis.DataSet([
-  { id: "Player character", label: "Player character", shape: shape, value: 38, font: { background: fontBG }, color: "#FFA807", system: "Player" },
+  { id: "Player character", label: "Player character", shape: shape, value: 39, font: { background: fontBG }, color: "#FFA807", system: "Player" },
   { id: "Attributes", label: "Attributes", shape: shape, value: 11, font: { background: fontBG }, color: "#FFA807", system: "Player" },
   { id: "Weapon/shield", label: "Weapon/shield", shape: shape, value: 18, font: { background: fontBG }, color: "black", system: "Weapon/shield"},
   { id: "Equipment", label: "Equipment", shape: shape, value: 33, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment" },
@@ -41,10 +41,10 @@ var nodes = new vis.DataSet([
   { id: "Resistances", label: "Resistances", shape: shape, value: 4, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
   { id: "Poise", label: "Poise", shape: shape, value: 8, font: { background: fontBG }, color: "#e14141", system: "Resources"},
   { id: "Inventory/attunement", label: "Inventory/attunement", shape: shape, value: 8, font: { background: fontBG }, color: "#ce41e1", system: "Items/equipment"},
-  { id: "Day/night cycle", label: "Day/night cycle", shape: shape, value: 2, font: { background: fontBG }, color: "#f291e7", system: "Extra world systems"},
-  { id: "Weather", label: "Weather", shape: shape, value: 3, font: { background: fontBG }, color: "#f291e7", system: "Extra world systems"},
+  { id: "Day/night cycle", label: "Day/night cycle", shape: shape, value: 4, font: { background: fontBG }, color: "#f291e7", system: "Extra world systems"},
+  { id: "Weather", label: "Weather", shape: shape, value: 6, font: { background: fontBG }, color: "#f291e7", system: "Extra world systems"},
   { id: "Bonfire", label: "Bonfire", shape: shape, value: 10, font: { background: fontBG }, color: "#97C2FC", system: "World"},
-  { id: "Message/sign", label: "Message/sign", shape: shape, value: 3, font: { background: fontBG }, color: "#97C2FC", system: "World"},
+  { id: "Message/sign", label: "Message/sign", shape: shape, value: 5, font: { background: fontBG }, color: "#97C2FC", system: "World"},
   
   { id: "Swing", label: "Swing", shape: shape, value: 10, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
   { id: "Roll", label: "Roll", shape: shape, value: 9, font: { background: fontBG }, color: "#7BE141", system: "Player actions"},
@@ -198,8 +198,7 @@ var edges = new vis.DataSet([
   { from: "Utility magic/item", to: "Durability", label: "Changes", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   { from: "Utility magic/item", to: "Visibility", label: "Changes", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Utility magic/item", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
-  { from: "Utility magic/item", to: "Player character", label: "Summons/invades", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
-  { from: "Utility magic/item", to: "NPC", label: "Summons", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Utility magic/item", to: "Player character", label: "Unsummons/invades", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Utility magic/item", to: "Item discovery", label: "Increases", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   { from: "Utility magic/item", to: "Level geometry", label: "Opens gate", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   { from: "Utility magic/item", to: "Level geometry", label: "Blends player in", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
@@ -229,7 +228,7 @@ var edges = new vis.DataSet([
   { from: "Swing", to: "Durability", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   { from: "Swing", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Swing", to: "Weapon/shield", label: "Enables counter atk.", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
-  { from: "Swing", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
+  { from: "Swing", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
   
   { from: "Hitbox", to: "Hurtbox", label: "Collides", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Hitbox", to: "Level geometry", label: "Collides", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
@@ -241,12 +240,12 @@ var edges = new vis.DataSet([
   { from: "Roll", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Roll", to: "Swing", label: "Dodges", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Roll", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
-  { from: "Roll", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
+  { from: "Roll", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
   
   { from: "Jump", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement"},
   { from: "Jump", to: "Level geometry", label: "Crosses gap", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   { from: "Jump", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
-  { from: "Jump", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
+  { from: "Jump", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
   
   { from: "Backstab", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstab", to: "Health", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
@@ -274,9 +273,10 @@ var edges = new vis.DataSet([
   { from: "Sprint", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Sprint", to: "Player character", label: "Increases speed", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   { from: "Sprint", to: "Swing", label: "Enables new", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
-  { from: "Sprint", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
+  { from: "Sprint", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
   
   { from: "Kick", to: "NPC", label: "Staggers", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Kick", to: "NPC", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   
   { from: "Stamina", to: "Player character", label: "Restricts actions", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   
@@ -299,7 +299,7 @@ var edges = new vis.DataSet([
   { from: "Level geometry", to: "Equipment", label: "Contains", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Level geometry", to: "Health", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Level geometry", to: "Hurtbox", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
-  { from: "Level geometry", to: "Weapon/shield", label: "Enables plunge", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "Level geometry", to: "Weapon/shield", label: "Enables plunge atk.", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   
   { from: "Visibility", to: "Level geometry", label: "Reveals", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Visibility", to: "NPC", label: "Reveals", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
@@ -322,9 +322,15 @@ var edges = new vis.DataSet([
   
   { from: "Souls", to: "NPC", label: "Spent to buy from", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
   
+  { from: "Message/sign", to: "Player character", label: "Summons", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Message/sign", to: "NPC", label: "Summons", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  
   { from: "Weather", to: "Status effect", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Weather", to: "Durability", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
+  { from: "Weather", to: "Health", label: "Changes", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
+  { from: "Weather", to: "Stamina", label: "Changes recovery", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   { from: "Weather", to: "Bonfire", label: "Puts out", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
+  { from: "Weather", to: "Noise", label: "Covers", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
   
   { from: "Day/night cycle", to: "Visibility", label: "Affects", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Day/night cycle", to: "AI", label: "Affects", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
@@ -404,7 +410,7 @@ barnesHut: {
       theta: 0.5,
       gravitationalConstant: -7000,
       centralGravity: 0.3,
-      springLength: 300,
+      springLength: 500,
       springConstant: 0.01,
       damping: 0.09,
       avoidOverlap: 0.1

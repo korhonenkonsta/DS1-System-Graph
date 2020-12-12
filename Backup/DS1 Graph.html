@@ -55,7 +55,7 @@
       </label>
       <label>
       
-      <input type="checkbox" name="nodesFilter" value="Extra world systems" checked />
+      <input type="checkbox" name="nodesFilter" value="Extra world systems" unchecked />
       <span style="color: #f291e7">Extra world systems (not in game)</span>
     </label>
   </div>
@@ -104,15 +104,13 @@
 </label>
 
 <p>
-  Click the button below to cluster the network. Click on a cluster to open it.
-</p>
-
-<input
+  <input
   type="button"
   onclick="clusterBySystem()"
   value="Cluster by system"
-/>
-<br />
-<input type="button" onclick="uncluster()" value="Uncluster all" />
+  />
+  <input type="button" onclick="uncluster()" value="Uncluster all" />
+  Click on a cluster (square node) to open it.
+</p>
 
 <div id="mynetwork"></div>
