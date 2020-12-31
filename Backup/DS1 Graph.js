@@ -199,7 +199,7 @@ var edges = new vis.DataSet([
   { from: "Combat magic/item", to: "NPC", label: "Charms", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Combat magic/item", to: "Projectile", label: "Deflects", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Combat magic/item", to: "NPC", label: "Knocks back", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
-  { from: "Combat magic/item", to: "Player", label: "Knocks back", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "Combat magic/item", to: "Player character", label: "Knocks back", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   { from: "Combat magic/item", to: "Level geometry", label: "Creates resonance marker", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Combat magic/item", to: "Weapon/shield", label: "Allows ghost dmg", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Combat magic/item", to: "Player character", label: "Transforms", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
@@ -251,6 +251,7 @@ var edges = new vis.DataSet([
   { from: "Roll", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Roll", to: "Swing", label: "Dodges", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Roll", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "Roll", to: "NPC", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   { from: "Roll", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Other" },
   
   { from: "Jump", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement"},
@@ -261,8 +262,8 @@ var edges = new vis.DataSet([
   { from: "Backstab", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstab", to: "Health", label: "Reduces", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstab", to: "Hurtbox", label: "Grants temp invuln.", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
-  { from: "Backstab", to: "Player", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
-  { from: "Backstab", to: "NPC", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Backstab", to: "Player", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "Backstab", to: "NPC", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   
   { from: "Block", to: "Stamina", label: "Consumes on hit", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Block", to: "Stamina", label: "Slows recovery", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
@@ -279,6 +280,7 @@ var edges = new vis.DataSet([
   { from: "Backstep", to: "Poise", label: "Maxes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "Backstep", to: "Swing", label: "Enables new", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   { from: "Backstep", to: "Player character", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "Backstep", to: "NPC", label: "Moves", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
   { from: "Backstep", to: "Noise", label: "Causes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   
   { from: "Sprint", to: "Stamina", label: "Consumes", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
