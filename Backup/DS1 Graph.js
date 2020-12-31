@@ -125,6 +125,17 @@ var edges = new vis.DataSet([
   { from: "NPC", to: "Souls", label: "Drops", arrows: "to", font: { align: "horizontal" }, relation: "Changes resources" },
   { from: "NPC", to: "Visibility", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   
+  { from: "NPC", to: "Swing", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "NPC", to: "Sprint", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "NPC", to: "Kick", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "NPC", to: "Backstep", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "NPC", to: "Backstab", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "NPC", to: "Roll", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "NPC", to: "Block", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "NPC", to: "Jump", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Movement" },
+  { from: "NPC", to: "Parry", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "NPC", to: "Riposte", label: "Performs", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  
   { from: "AI", to: "NPC", label: "Decides action", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   
   { from: "Health", to: "Player character", label: "Kills", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
@@ -313,6 +324,7 @@ var edges = new vis.DataSet([
   { from: "Bonfire", to: "Inventory/attunement", label: "Has", arrows: "to", font: { align: "horizontal" }, relation: "Has/contains/equips" },
   { from: "Bonfire", to: "Day/night cycle", label: "Advances", arrows: "to", font: { align: "horizontal" }, relation: "Utility actions" },
   { from: "Bonfire", to: "NPC", label: "Respawns", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
+  { from: "Bonfire", to: "Player character", label: "Grants estus on kindle", arrows: "to", font: { align: "horizontal" }, relation: "Combat actions" },
   
   { from: "Item discovery", to: "NPC", label: "Increases drop rate", arrows: "to", font: { align: "horizontal" }, relation: "Changes stats" },
   
@@ -365,7 +377,7 @@ const nodesFilterValues = {
   "Hitbox/hurtbox": true,
   "Visibility": true,
   "Noise": true,
-  "Extra world systems": true,
+  "Extra world systems": false,
 
 };
 
@@ -517,28 +529,4 @@ function clusterBySystem() {
     };
     network.cluster(clusterOptionsByData);
   }
-}
-
-function clusterByConnection() {
-  network.setData(data);
-  network.clusterByConnection(1);
-}
-function clusterOutliers() {
-  network.setData(data);
-  network.clusterOutliers();
-}
-function clusterByHubsize() {
-  network.setData(data);
-  var clusterOptionsByData = {
-    processProperties: function (clusterOptions, childNodes) {
-      clusterOptions.label = "[" + childNodes.length + "]";
-      return clusterOptions;
-    },
-    clusterNodeProperties: {
-      borderWidth: 3,
-      shape: "box",
-      font: { size: 30, background: fontBG },
-    },
-  };
-  network.clusterByHubsize(undefined, clusterOptionsByData);
 }
